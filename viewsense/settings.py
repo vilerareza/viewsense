@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-$8m=(_e&b__!s4k_a07$9$7bi_pgi0w1!j#v5b_&6fc%34wnn1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['viewsense.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

@@ -13,9 +13,9 @@ camera = server.camera()
 def index(request):
     if request.user.is_authenticated:
         camera.listen_thread()
-        #status = camera.status
-        #return render(request, 'dashboard/index.html', {'status' : status})
-        return render(request, 'dashboard/index.html')
+        status = camera.status
+        return render(request, 'dashboard/index.html', {'status' : status})
+        #return render(request, 'dashboard/index.html')
     else:
         return HttpResponseRedirect('../login')
 

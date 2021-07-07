@@ -5,9 +5,9 @@ from django.http import HttpResponse
 from django.http import StreamingHttpResponse
 from django.http import JsonResponse
 from . import server
-import sys
 
-camera = server.camera()
+
+#camera = server.camera()
 
 # Create your views here.
 def index(request):
@@ -19,6 +19,7 @@ def index(request):
     else:
         return HttpResponseRedirect('../login')
 
+'''
 def frame_gen():
     while True:
         with camera.condition:
@@ -39,3 +40,4 @@ def statusUpdate(request):
         camera.statusChange.wait()
         statusResponse = JsonResponse({'status': str(camera.status), 'camera_address':str(camera.cam_addr)})
         return statusResponse
+        '''

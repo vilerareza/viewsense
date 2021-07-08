@@ -11,16 +11,14 @@ from . import server
 
 # Create your views here.
 def index(request):
-    return HttpResponse("I am Okay")
-    '''
     if request.user.is_authenticated:
         #camera.listen_thread()
         #status = camera.status
         #return render(request, 'dashboard/index.html', {'status' : status})
-        return render(request, 'dashboard/index.html')
+        #return render(request, 'dashboard/index.html')
+        return HttpResponse("loggen in")
     else:
         return HttpResponseRedirect('../login')
-    '''
 
 '''
 def frame_gen():

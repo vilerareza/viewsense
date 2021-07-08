@@ -7,19 +7,17 @@ from django.http import JsonResponse
 from . import server
 
 
-#camera = server.camera()
+camera = server.camera()
 
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
-        #camera.listen_thread()
-        #status = camera.status
-        #return render(request, 'dashboard/index.html', {'status' : status})
-        return render(request, 'dashboard/index.html')
+        camera.listen_thread()
+        status = camera.status
+        return render(request, 'dashboard/index.html', {'status' : status})
     else:
         return HttpResponseRedirect('../login')
 
-'''
 def frame_gen():
     while True:
         with camera.condition:
@@ -40,4 +38,3 @@ def statusUpdate(request):
         camera.statusChange.wait()
         statusResponse = JsonResponse({'status': str(camera.status), 'camera_address':str(camera.cam_addr)})
         return statusResponse
-        '''

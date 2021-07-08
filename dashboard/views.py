@@ -11,7 +11,7 @@ from . import server
 
 # Create your views here.
 def index(request):
-    return render(request, 'dashboard/index.html')
+    return HttpResponse("I am Okay")
     '''
     if request.user.is_authenticated:
         #camera.listen_thread()
@@ -21,7 +21,7 @@ def index(request):
     else:
         return HttpResponseRedirect('../login')
     '''
-    
+
 '''
 def frame_gen():
     while True:

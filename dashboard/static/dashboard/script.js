@@ -24,13 +24,13 @@ xhr.onreadystatechange = function(){
         }
 
         //Resend the request
-        xhr.open('GET', 'http://127.0.0.1:8000/dashboard/status');
+        xhr.open('GET', 'https://viewsense.herokuapp.com/dashboard/status');
         xhr.send();
         console.log('sent');
     }
 }
 
 // Send the request
-xhr.open('GET', 'http://127.0.0.1:8000/dashboard/status');
+xhr.open('GET', 'https://viewsense.herokuapp.com/dashboard/status');
 xhr.send();
 console.log('sent initial');

@@ -15,8 +15,7 @@ def index(request):
         #camera.listen_thread()
         #status = camera.status
         #return render(request, 'dashboard/index.html', {'status' : status})
-        #return render(request, 'dashboard/index.html')
-        return HttpResponse("loggen in")
+        return render(request, 'dashboard/index.html')
     else:
         return HttpResponseRedirect('../login')
 

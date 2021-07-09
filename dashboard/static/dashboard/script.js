@@ -16,10 +16,12 @@ xhr.onreadystatechange = function(){
             case 'No Camera Connection':
                 status_label.innerHTML = status;
                 status_label.style.backgroundColor = "#FF4A53";
+                console.log('no camera connection')
                 break;
             case 'Connected':
                 status_label.innerHTML = `${status}, Cam IP: ${address}`;
                 status_label.style.backgroundColor = "#00B050";
+                console.log('connected')
                 //status_label.style.backgroundColor = "#0088FF";
         }
 

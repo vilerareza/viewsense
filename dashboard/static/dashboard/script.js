@@ -35,4 +35,4 @@ xhr.onreadystatechange = function(){
 // Send the request
 xhr.open('GET', 'https://viewsense.herokuapp.com/dashboard/status');
 xhr.send();
-console.log('sent initial');
+console.log('sent initial ok');

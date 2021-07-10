@@ -1,0 +1,56 @@
+<!--{% load static %}-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Viewsense Dashboard</title>
+        <!--<link href= "{% static 'dashboard/style.css' %}" rel="stylesheet">-->
+        <!--<script defer src="{% static 'dashboard/script.js'%}"></script>-->
+    </head>
+    
+    <body>
+        <!--{{username}}
+        {{password}}-->
+        
+        <!--
+        <div class="header">
+            <img id="header_logo" src="{% static '/dashboard/images/vs_logo.png' %}" alt ="vs_logo" width="180">    
+        </div>
+
+        <div class="header logout_form">
+            <form name="logoutForm" action="../login/" method="get">
+                <input type = "hidden" name="status" value = "logout" />
+                <input id = "logout_button" type="submit" value ="Logout"/>
+            </form>
+        </div>
+
+        <p id="header_line"></p>
+
+        <div class="content">
+            <div id="frame1">
+                <p id="status_label">{{status}}</p> 
+                <script>
+                    let status = '{{status}}';
+                    const status_label = document.getElementById('status_label');
+                    console.log(status);
+                    switch(status){
+                        case 'No Camera Connection':
+                            status_label.style.backgroundColor = "#FF4A53";
+                            console.log('case 0')
+                            break;
+                        case 'No Camera Connection':
+                            status_label.style.backgroundColor = "#00B050";
+                            console.log('case 0')
+                            break;
+                    }
+                        
+                </script>
+                <img id="liveImage" src="stream.mjpg" alt ="Image Not Found" width="640" onerror="this.onerror=null;this.src='stream.mjpg';" /> 
+                <script>console.log("image load")</script>
+                <img class="frame" src="{% static 'dashboard/images/frame.png' %}" alt ="stream" width="640"> 
+            </div>
+        </div>
+    -->
+    </body>
+</html>

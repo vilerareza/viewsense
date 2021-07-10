@@ -3,6 +3,7 @@ const xhr = new XMLHttpRequest;
 
 //const targetHost = 'https://viewsense.herokuapp.com/dashboard/status'
 //const targetHost = 'http://127.0.0.1:8000/dashboard/status';
+
 const targetHost = 'http://52.224.63.202:80/dashboard/status';
 
 xhr.onreadystatechange = function(){

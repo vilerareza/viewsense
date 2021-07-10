@@ -11,7 +11,7 @@ from threading import Condition
 class camera():
 
     host = ''
-    port = 65000
+    port = 65003
     lsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sel = selectors.DefaultSelector()
     condition = Condition()

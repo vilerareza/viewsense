@@ -1,29 +1,32 @@
+from dashboard.models import CameraGateway, Frame
 from django.contrib.auth import authenticate, login
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import StreamingHttpResponse
 from django.http import JsonResponse
-from . import server
+#from . import server
 
+gateway = CameraGateway.objects.get(name="gate1")
+frame = Frame.objects.get(name="frame1") 
 
-camera = server.camera()
+gateway.frame = frame
 
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
-        camera.listen_thread()
-        status = camera.status
-        return render(request, 'dashboard/index.html', {'status' : status})
+        gateway.listen_thread()
+        status = gateway.status
+        return render(request, 'dashboard/index.html', {'status' : status, 'address' : gateway.cam_addr})
     else:
         return HttpResponseRedirect('../login')
 
 def frame_gen():
     while True:
-        with camera.condition:
-             camera.condition.wait()
-             frame = camera.frame
-             yield (b'--FRAME\r\n' + b'Content-Type : image/mjpeg\r\n\r\n' + frame + b'\r\n')
+        with gateway.condition:
+             gateway.condition.wait()
+             streamFrame = frame.content
+             yield (b'--FRAME\r\n' + b'Content-Type : image/mjpeg\r\n\r\n' + streamFrame + b'\r\n')
 
 def start_stream(request):
     streamresponse = StreamingHttpResponse(frame_gen())
@@ -32,9 +35,8 @@ def start_stream(request):
     streamresponse.headers['Content-Type'] = 'multipart/x-mixed-replace; boundary=FRAME'
     return streamresponse
 
-
 def statusUpdate(request):
-    with camera.statusChange:
-        camera.statusChange.wait()
-        statusResponse = JsonResponse({'status': str(camera.status), 'camera_address':str(camera.cam_addr)})
+    with gateway.statusChange:
+        gateway.statusChange.wait()
+        statusResponse = JsonResponse({'status': str(gateway.status), 'camera_address':str(gateway.cam_addr)})
         return statusResponse

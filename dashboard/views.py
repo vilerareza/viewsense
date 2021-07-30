@@ -7,14 +7,18 @@ from django.http import StreamingHttpResponse
 from django.http import JsonResponse
 #from . import server
 
-gateway = CameraGateway.objects.get(name="gate1")
-frame = Frame.objects.get(name="frame1") 
+gateway = None
+frame = None
 
-gateway.frame = frame
+def getobjects():
+    gateway = CameraGateway.objects.get(name="gate1")
+    frame = Frame.objects.get(name="frame1") 
+    gateway.frame = frame
 
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
+        getobjects()
         gateway.listen_thread()
         status = gateway.status
         return render(request, 'dashboard/index.html', {'status' : status, 'address' : gateway.cam_addr})

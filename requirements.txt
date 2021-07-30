@@ -5,13 +5,11 @@ click==8.0.1
 colorama==0.4.4       
 dj-database-url==0.5.0
 Django==3.2.3
-django-heroku==0.3.1  
 gunicorn==20.1.0      
 itsdangerous==2.0.1
 Jinja2==3.0.1
-MarkupSafe==2.0.1
-numpy==1.20.2
-psycopg2==2.8.6
+MarkupSafe
+numpy
 python-decouple==3.4
 pytz==2021.1
 requests==2.25.1

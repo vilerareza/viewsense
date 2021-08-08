@@ -24,12 +24,13 @@ class camera():
     cam_addr =''
 
     def __write(self, buf):
-        
+        #print('writing')        
         if buf.startswith(b'\xff\xd8'):
             self.buffer.truncate()
             with self.condition:
                 self.frame = self.buffer.getvalue()
                 self.condition.notify_all()
+                #print('frame ready')
             self.buffer.seek(0)
         
         return self.buffer.write(buf)
@@ -67,6 +68,7 @@ class camera():
         with self.statusChange:
             self.status = 'Connected'
             self.statusChange.notify_all()
+            print('status change to connected')
 
     
     def __service_connection (self, key, mask):
